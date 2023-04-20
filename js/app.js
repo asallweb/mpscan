@@ -176,11 +176,11 @@ acceptBtns.forEach(accept => accept.addEventListener('click', makeUneditable));
 
 
 // Получите все элементы с классом tags-add
-const tagsAddList = document.querySelectorAll(".tags-add");
-const itemColorsAdd = document.querySelectorAll('.tags-add__item-color');
+const tagsAdd = document.querySelectorAll(".tags-add");
+const itemAddItems = document.querySelectorAll('.tags-add__item');
 
 // Переберите все элементы и добавьте обработчик клика
-tagsAddList.forEach(function (tagsAdd) {
+tagsAdd.forEach(function (tagsAdd) {
   // Найдите кнопку с классом tags-add__plus внутри текущего элемента tags-add
   const button = tagsAdd.querySelector(".tags-add__plus");
 
@@ -191,6 +191,7 @@ tagsAddList.forEach(function (tagsAdd) {
   button.addEventListener("click", function () {
     // Переключите класс _active для элемента списка
     list.classList.toggle("_active");
+    button.classList.toggle("_active");
   });
 });
 
@@ -198,6 +199,6 @@ tagsAddList.forEach(function (tagsAdd) {
 // функция, которая переключает класс _active при клике на цветной элемент
 function toggleActiveColor(e) {
   const target = e.currentTarget;
-  target.classList.toggle('_active');
+  target.querySelector(".tags-add__item-color").classList.toggle('_active');
 }
-itemColorsAdd.forEach(colorAdd => colorAdd.addEventListener('click', toggleActiveColor));
+itemAddItems.forEach(itemAdd => itemAdd.addEventListener('click', toggleActiveColor));
